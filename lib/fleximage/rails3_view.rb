@@ -1,7 +1,6 @@
 module Fleximage
-  class Rails3View < ActionView::Template::Handler
-    include ActionView::Template::Handlers::Compilable
-    
+  class Rails3View
+
     class TemplateDidNotReturnImage < RuntimeError #:nodoc:
     end
 
