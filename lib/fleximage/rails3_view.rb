@@ -3,6 +3,10 @@ module Fleximage
 
     class TemplateDidNotReturnImage < RuntimeError #:nodoc:
     end
+    
+    def self.call(template)
+      self.new.compile(template)
+    end
 
     def compile(template)
       <<-CODE
