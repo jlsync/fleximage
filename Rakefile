@@ -39,7 +39,6 @@ EOF
     gem.homepage = "http://github.com/tvdeyen/fleximage"
     gem.authors = `git log --pretty=format:"%an"`.split("\n").uniq.sort
     gem.add_dependency "rmagick"
-    gem.add_dependency "aws-s3"
     gem.add_development_dependency "rails", ">=3.0.0"
   end
   Jeweler::GemcutterTasks.new
