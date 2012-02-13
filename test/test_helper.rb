@@ -1,9 +1,9 @@
 # Load the environment
-ENV['RAILS_ENV'] ||= 'test'
-require File.dirname(__FILE__) + '/rails_root/config/environment.rb'
- 
+ENV["RAILS_ENV"] = "test"
+require File.expand_path("../rails_root/config/environment.rb",  __FILE__) 
+
 # Load the testing framework
-require 'test_help'
+require 'rails/test_help'
 silence_warnings { RAILS_ENV = ENV['RAILS_ENV'] }
  
 # Run the migrations

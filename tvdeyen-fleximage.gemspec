@@ -4,16 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{tvdeyen-fleximage}
-  s.version = "1.0.8"
+  s.name = "tvdeyen-fleximage"
+  s.version = "1.0.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Ahmed Adam", "Alex Wayne", "Andrew White", "Duccio", "Fernando Kosh", "Heiner Wohner", "JJ Buckley", "Jason Lee", "Joshua Abbott", "Koji Ando", "Kouhei Sutou", "Lasse Jansen", "Lo\303\257c Guitaut", "Martin Vielsmaier", "Squeegy", "Thomas von Deyen", "Vannoy", "Wolfgang Klinger", "Wolfgang K\303\266lbl", "josei", "ralph"]
-  s.date = %q{2011-09-09}
-  s.description = %q{Fleximage is a Rails plugin that tries to make image uploading and rendering
-super easy.
-}
-  s.email = %q{tvdeyen@gmail.com}
+  s.authors = ["Ahmed Adam", "Alex Wayne", "Andrew White", "Carsten Fregin", "Duccio", "Fernando Kosh", "Heiner Wohner", "JJ Buckley", "Jason Lee", "Joshua Abbott", "Koji Ando", "Kouhei Sutou", "Lasse Jansen", "Lo\u{ef}c Guitaut", "Martin Vielsmaier", "Squeegy", "Thomas von Deyen", "Vannoy", "Wolfgang Klinger", "Wolfgang K\u{f6}lbl", "josei", "masche842", "ralph"]
+  s.date = "2011-11-07"
+  s.description = "Fleximage is a Rails plugin that tries to make image uploading and rendering\nsuper easy.\n"
+  s.email = "tvdeyen@gmail.com"
   s.extra_rdoc_files = [
     "README.rdoc"
   ]
@@ -154,28 +152,22 @@ super easy.
     "test/unit/use_creation_date_based_directories_option_test.rb",
     "tvdeyen-fleximage.gemspec"
   ]
-  s.homepage = %q{http://github.com/tvdeyen/fleximage}
+  s.homepage = "http://github.com/tvdeyen/fleximage"
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.7.2}
-  s.summary = %q{Rails plugin for uploading images as resources, with support for resizing, text stamping, and other special effects.}
+  s.rubygems_version = "1.8.11"
+  s.summary = "Rails plugin for uploading images as resources, with support for resizing, text stamping, and other special effects."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      if(RUBY_ENGINE == 'jruby')
-        s.add_runtime_dependency(%q<rmagick4j>, [">= 0"])
-      else
-        s.add_runtime_dependency(%q<rmagick>, [">= 0"])
-      end
-      s.add_development_dependency(%q<rails>, [">= 3.0.0"])
+      s.add_runtime_dependency(%q<rmagick>, [">= 0"])
+      s.add_development_dependency(%q<rails>, ["~> 3.2.1"])
     else
       s.add_dependency(%q<rmagick>, [">= 0"])
-      s.add_dependency(%q<rails>, [">= 3.0.0"])
     end
   else
     s.add_dependency(%q<rmagick>, [">= 0"])
-    s.add_dependency(%q<rails>, [">= 3.0.0"])
   end
 end
 

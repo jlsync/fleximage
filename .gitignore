@@ -19,6 +19,7 @@ coverage
 rdoc
 pkg
 *.gem
+Gemfile.lock
 
 ## PROJECT::SPECIFIC
 test/rails_root/log/*
