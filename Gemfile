@@ -5,4 +5,6 @@ gemspec
 group :test do
 	gem 'rails', '~> 3.2.1'
 	gem 'sqlite3'
+  gem 'ruby-debug'
+  gem 'jeweler'
 end

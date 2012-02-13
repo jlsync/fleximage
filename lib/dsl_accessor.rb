@@ -12,6 +12,7 @@ class Class
       else raise TypeError, "DSL Error: writer should be a symbol or proc. but got `#{options[:writer].class}'"
       end
     class_attribute :"#{name}_writer"
+    class_attribute :"#{name}_value"
     self.send(:"#{name}_writer=", writer)
 
     default =
@@ -30,7 +31,7 @@ class Class
       define_method("#{name}=") do |value|
         writer = self.send(:"#{name}_writer")
         value  = writer.call(value) if writer
-        self.send(:"#{name}=", value)
+        self.send(:"#{name}_value=", value)
       end
 
       define_method(name) do |*values|
@@ -40,12 +41,12 @@ class Class
           if !self.respond_to?(key)
             default = self.send(:"#{name}_default")
             value   = default ? default.call(self) : nil
-            __send__("#{name}=", value)
+            self.send("#{name}_value=", value)
           end
-          self.send(key)
+          self.send("#{key}_value")
         else
           # setter method
-          __send__("#{name}=", *values)
+          __send__("#{name}_value=", *values)
         end
       end
     end
