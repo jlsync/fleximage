@@ -545,7 +545,7 @@ module Fleximage
           @output_image.to_blob
         end
       ensure
-        GC.start
+        #JL GC.start
       end
       
       # Delete the image file for this record. This is automatically ran after this record gets 
@@ -628,7 +628,7 @@ module Fleximage
 
           # Start GC to close up memory leaks
           if @uploaded_image
-            GC.start
+            #JL GC.start
           end
         end
         
@@ -707,7 +707,7 @@ module Fleximage
             raise MasterImageNotFound, message
           end
         ensure
-          GC.start
+          #JL GC.start
         end
     end
     
