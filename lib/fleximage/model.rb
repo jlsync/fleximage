@@ -138,7 +138,7 @@ module Fleximage
         
         
         def self.translate_error_message(name, fallback, options = {})
-          translation = I18n.translate "activerecord.errors.models.#{self.model_name.underscore}.#{name}", options
+          translation = I18n.translate "activerecord.errors.models.#{self.model_name.to_str.underscore}.#{name}", options
           if translation.match /translation missing:/
             I18n.translate "activerecord.errors.messages.#{name}", options.merge({ :default => fallback })
           end
