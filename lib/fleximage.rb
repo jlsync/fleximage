@@ -2,7 +2,7 @@ require 'open-uri'
 require 'base64'
 require 'digest/sha1'
 
-require 'RMagick' unless defined?(Magick)
+require 'rmagick' unless defined?(Magick)
 
 # Apply a few RMagick patches
 require 'fleximage/rmagick_image_patch'
