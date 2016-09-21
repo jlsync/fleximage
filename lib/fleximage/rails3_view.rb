@@ -23,7 +23,7 @@ module Fleximage
         raise 'Image must be requested with an image type format.  jpg, gif and png only are supported.' unless [:jpg, :gif, :png].include?(requested_format)
 
         x = result.output_image(:format => requested_format)
-        puts x.inspect
+        #puts x.inspect
         x
       rescue Exception => e
         e
