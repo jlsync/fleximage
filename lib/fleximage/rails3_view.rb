@@ -11,7 +11,7 @@ module Fleximage
     def compile(template)
       <<-CODE
       @template_format = :flexi
-      controller.response.content_type ||= Mime::JPG    
+      controller.response.content_type ||= Mime[:jpg]
       result = #{template.source}
       requested_format = (params[:format] || :jpg).to_sym
       begin
