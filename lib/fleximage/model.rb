@@ -540,7 +540,10 @@ module Fleximage
         @output_image.strip!
         if format == 'JPG'
           quality = @jpg_compression_quality || self.class.output_image_jpg_quality
-          @output_image.to_blob { self.quality = quality }
+          @output_image.to_blob { 
+            self.quality = quality 
+            self.interlace = Magick::PlaneInterlace  # progressive jpeg
+          }
         else
           @output_image.to_blob
         end
