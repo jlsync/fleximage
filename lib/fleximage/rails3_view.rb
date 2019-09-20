@@ -4,15 +4,16 @@ module Fleximage
     class TemplateDidNotReturnImage < RuntimeError #:nodoc:
     end
     
-    def self.call(template)
+    def self.call(template, source = nil)
+      source ||= template.source
       self.new.compile(template)
     end
 
-    def compile(template)
+    def compile(template, source)
       <<-CODE
       @template_format = :flexi
       controller.response.content_type ||= Mime[:jpg]
-      result = #{template.source}
+      result = #{source}
       requested_format = (params[:format] || :jpg).to_sym
       begin
         # Raise an error if object returned from template is not an image record
