@@ -6,7 +6,7 @@ module Fleximage
     
     def self.call(template, source = nil)
       source ||= template.source
-      self.new.compile(template)
+      self.new.compile(template, source)
     end
 
     def compile(template, source)
