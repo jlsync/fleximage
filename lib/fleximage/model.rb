@@ -39,6 +39,9 @@ module Fleximage
     # * +output_image_jpg_quality+: (Integer, default 85) When rendering JPGs, this represents the amount of
     #   compression.  Valid values are 0-100, where 0 is very small and very ugly, and 100 is near lossless but
     #   very large in filesize.
+    # * +output_image_webp_quality+: (Integer, default 85) When rendering WEBPs, this represents the amount of
+    #   compression.  Valid values are 0-100, where 0 is very small and very ugly, and 100 is near lossless but
+    #   very large in filesize.
     # * +default_image_path+: (String, nil default) If no image is present for this record, the image at this path will be
     #   used instead.  Useful for a placeholder graphic for new content that may not have an image just yet.
     # * +default_image+: A hash which defines an empty starting image.  This hash look like: <tt>:size => '123x456',
@@ -61,6 +64,7 @@ module Fleximage
     #       default_image_path        'public/images/no_photo_yet.png'
     #       default_image             nil
     #       output_image_jpg_quality  85
+    #       output_image_webp_quality 75
     #       
     #       preprocess_image do |image|
     #         image.resize '1024x768'
@@ -192,6 +196,7 @@ module Fleximage
         
         # Sets the quality of rendered JPGs
         dsl_accessor :output_image_jpg_quality, :default => 85
+        dsl_accessor :output_image_webp_quality, :default => 85
         
         # Set a default image to use when no image has been assigned to this record
         dsl_accessor :default_image_path
@@ -533,7 +538,7 @@ module Fleximage
       end
       
       # Convert the current output image to a jpg, and return it in binary form.  options support a
-      # :format key that can be :jpg, :gif or :png
+      # :format key that can be :jpg, :gif, :png or :webp
       def output_image(options = {}) #:nodoc:
         format = (options[:format] || :jpg).to_s.upcase
         @output_image.format = format
@@ -543,6 +548,11 @@ module Fleximage
           @output_image.to_blob { 
             self.quality = quality 
             self.interlace = Magick::JPEGInterlace  # progressive jpeg
+          }
+        elsif format == 'WEBP'
+          quality = @jpg_compression_quality || self.class.output_image_webp_quality
+          @output_image.to_blob {
+            self.quality = quality
           }
         else
           @output_image.to_blob

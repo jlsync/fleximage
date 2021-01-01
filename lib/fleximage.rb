@@ -53,5 +53,6 @@ ActionController::Base.class_eval{ include Fleximage::AviaryController }
 
 # Register mime types
 Mime::Type.register "image/jpeg", :jpg, ["image/pjpeg"], ["jpeg"]
+Mime::Type.register "image/webp", :webp
 #already in ActionPack Mime::Type.register "image/gif", :gif
 #already in ActionPAck Mime::Type.register "image/png", :png

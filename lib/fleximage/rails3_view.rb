@@ -21,7 +21,7 @@ module Fleximage
           raise TemplateDidNotReturnImage, ".flexi template was expected to return a model instance that acts_as_fleximage, but got an instance of instead."
         end
         # Figure out the proper format
-        raise 'Image must be requested with an image type format.  jpg, gif and png only are supported.' unless [:jpg, :gif, :png].include?(requested_format)
+        raise 'Image must be requested with an image type format.  jpg, gif and png only are supported.' unless [:jpg, :gif, :png, :webp].include?(requested_format)
 
         x = result.output_image(:format => requested_format)
         #puts x.inspect

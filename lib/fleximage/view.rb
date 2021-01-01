@@ -34,8 +34,8 @@ module Fleximage
       
       # Figure out the proper format
       requested_format = (@view.params[:format] || :jpg).to_sym
-      unless [:jpg, :gif, :png].include?(requested_format)
-        raise 'Image must be requested with an image type format. jpg, gif and png only are supported.'
+      unless [:jpg, :gif, :png, :webp].include?(requested_format)
+        raise 'Image must be requested with an image type format. jpg, gif, png and webp only are supported.'
       end
       
       # Set proper content type
