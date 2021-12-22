@@ -351,7 +351,7 @@ module Fleximage
           end
           
           # Sanitize image data
-          @uploaded_image.colorspace  = Magick::RGBColorspace
+          @uploaded_image.colorspace  = Magick::SRGBColorspace
           @uploaded_image.density     = '72'
           
           # Save meta data to database
